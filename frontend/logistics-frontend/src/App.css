@@ -1,0 +1,111 @@
+:root {
+  /* Opacity for disabled elements */
+  --opacity-disabled: 0.6;
+}
+
+/* Styles for dropdowns */
+.dropdown-toggle.custom-dropdown {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-toggle.custom-dropdown::after {
+  margin-left: 0.5rem;
+  float: right;
+}
+
+.dropdown-menu.custom-dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.dropdown-item.text-wrap {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-item.text-wrap.active,
+.dropdown-item.text-wrap:active {
+  background-color: #6c757d !important;
+  color: white !important;
+}
+
+/* No municipalities" message */
+.dropdown-item-disabled-message {
+  text-align: center;
+  padding: 1rem !important;
+  font-style: italic;
+  cursor: default !important;
+}
+
+.dropdown-item-disabled-message:hover {
+  background-color: transparent !important;
+}
+
+.custom-dropdown:disabled {
+  opacity: var(--opacity-disabled);
+}
+
+/* Styles for truncating text with ellipses */
+.truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.input-group-custom {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.input-group-custom.loading .dropdown-toggle {
+  opacity: var(--opacity-disabled);
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .dropdown-menu.custom-dropdown-menu {
+    max-height: 250px;
+    font-size: 14px;
+  }
+
+  .dropdown-item.text-wrap {
+    padding: 0.6rem 1rem;
+    line-height: 1.4;
+  }
+
+  .input-group-text {
+    padding: 0.5rem;
+  }
+
+  .truncate-text {
+    max-width: 90%;
+  }
+}
+
+/* For small screens */
+@media (max-width: 576px) {
+  .dropdown-menu.custom-dropdown-menu {
+    max-height: 200px;
+  }
+
+  .dropdown-item.text-wrap {
+    padding: 0.5rem 0.8rem;
+    font-size: 13px;
+  }
+
+  .truncate-text {
+    max-width: 85%;
+  }
+}

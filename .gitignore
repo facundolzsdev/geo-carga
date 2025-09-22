@@ -1,0 +1,28 @@
+# =================================
+# ARCHIVOS SENSIBLES 
+# =================================
+backend/logistics-core/src/main/resources/application.properties
+
+# =================================
+# CARPETAS GENERADAS AUTOMÁTICAMENTE
+# =================================
+backend/logistics-core/target/
+frontend/logistics-frontend/node_modules/
+frontend/logistics-frontend/dist/
+frontend/logistics-frontend/dist-ssr/
+
+# =================================
+# ARCHIVOS DE IDE
+# =================================
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# =================================
+# ARCHIVOS DE LOGS
+# =================================
+*.log
+*.tmp
