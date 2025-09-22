@@ -44,35 +44,35 @@ El sistema integra fuentes de datos externas para garantizar precisión en direc
 
 ### 📑 Backend
 
-- **Spring Boot 3.x** �?Framework principal para crear el servidor y exponer endpoints REST.
-- **WebClient** �?Consumo de APIs externas (GeoRef y GeoApify).
-- **Maven** �?Gestión de dependencias y construcción del proyecto. 
-- **MapStruct** �?Mapeo automático entre DTOs y entidades.
-- **Lombok** �?Reducción de boilerplate (getters, setters, constructores).
-- **Java 17** �?Lenguaje principal para la lógica de negocio.
-- **SLF4J + Logback** �?Sistema de logging para depuración y monitoreo.
+- **Spring Boot 3.x** Framework principal para crear el servidor y exponer endpoints REST.
+- **WebClient** Consumo de APIs externas (GeoRef y GeoApify).
+- **Maven** Gestión de dependencias y construcción del proyecto. 
+- **MapStruct** Mapeo automático entre DTOs y entidades.
+- **Lombok** Reducción de boilerplate (getters, setters, constructores).
+- **Java 17** Lenguaje principal para la lógica de negocio.
+- **SLF4J + Logback** Sistema de logging para depuración y monitoreo.
 
 ### 📑 Frontend
 
-- **Vite** �?Herramienta de bundling y desarrollo rápido para React.
-- **React** �?Framework principal para la interfaz de usuario.
-- **React Hooks** �?Manejo de estado y lógica de componentes.
-- **React-Bootstrap** �?Componentes visuales predefinidos y estilizados.
-- **React-Leaflet** �?Integración de mapas interactivos en React.
-- **Leaflet** �?Biblioteca de mapas geográficos (OpenStreetMap como base).
-- **Axios** �?Comunicación HTTP con el backend.
-- **JavaScript ES6+** �?Lógica del frontend y componentes dinámicos.
+- **Vite** Herramienta de bundling y desarrollo rápido para React.
+- **React** Framework principal para la interfaz de usuario.
+- **React Hooks** Manejo de estado y lógica de componentes.
+- **React-Bootstrap** Componentes visuales predefinidos y estilizados.
+- **React-Leaflet** Integración de mapas interactivos en React.
+- **Leaflet** Biblioteca de mapas geográficos (OpenStreetMap como base).
+- **Axios** Comunicación HTTP con el backend.
+- **JavaScript ES6+** Lógica del frontend y componentes dinámicos.
 
 ### 📑 Otros
 
-- **OpenStreetMap** �?Proveedor de teselas de mapa utilizadas en Leaflet.
+- **OpenStreetMap** Proveedor de teselas de mapa utilizadas en Leaflet.
 - **APIs externas:**
-  * **GeoRef** �?Catálogo de provincias, departamentos y municipios argentinos.
-  * **GeoApify** �?Geocodificación, cálculo de ruta y distancia.
+  * **GeoRef** Catálogo de provincias, departamentos y municipios argentinos.
+  * **GeoApify** Geocodificación, cálculo de ruta y distancia.
 
 ---
 
-## 🏗�?Estructura General del Proyecto
+## 🗂️ Estructura General del Proyecto
 
 ### 📑 Backend
 
@@ -152,7 +152,7 @@ Estos valores son simbólicos y ajustados a modo demostrativo, no representan ta
 
 ---
 
-?? [Ver la playlist en YouTube](https://youtube.com/playlist?list=PLo6gJIiicJy_sBoJFaMlj9ZW8p6nWRiPT&si=PRa6qnuANEeMss5s)
+🎞️ [Ver la playlist en YouTube](https://youtube.com/playlist?list=PLo6gJIiicJy_sBoJFaMlj9ZW8p6nWRiPT&si=PRa6qnuANEeMss5s)
 
 ---
 
