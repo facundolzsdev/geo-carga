@@ -14,6 +14,7 @@ El sistema integra fuentes de datos externas para garantizar precisión en direc
    - Selección guiada de provincias, departamentos y municipios.
    - Validación automática de direcciones para garantizar precisión en el cálculo.
 
+
 2. **Definir los datos del paquete:**
    - El usuario ingresa peso (kg) y dimensiones (cm³).
    - Validación automática en el frontend para evitar valores inválidos o que excedan los límites máximos:
@@ -22,19 +23,29 @@ El sistema integra fuentes de datos externas para garantizar precisión en direc
      * Ancho máximo: 175 cm
      * Alto máximo: 150 cm
 
-3. **Calcular cotización de envío:**
-   - El sistema envía los datos al backend y obtiene la distancia, tiempo estimado y costo del envío considerando peso y volumen.
 
-4. **Visualizar la ruta en un mapa interactivo:**
+3. **Seleccionar tipo de servicio:**
+   - El usuario debe elegir una modalidad de envío: **Normal**, **Express** o **Prioritario**.
+   - La opción **Normal** se selecciona por defecto.
+   - La modalidad elegida impacta directamente en el costo total y en el tiempo estimado de entrega. 
+
+
+4. **Calcular cotización de envío:**
+    - El sistema envía los datos al backend y obtiene la distancia, tiempo estimado y costo del envío considerando peso y volumen.
+
+
+5. **Visualizar la ruta en un mapa interactivo:**
    - Se muestra el trayecto completo entre origen y destino.
    - Marcadores diferenciados para origen y destino.
    - Posibilidad de hacer zoom y mover el mapa.
 
-5. **Recibir mensajes claros en caso de error:**
+
+6. **Recibir mensajes claros en caso de error:**
    - Direcciones iguales, no encontradas o fuera de rango reciben un mensaje de validación amigable.
    - La aplicación evita cálculos inválidos, asegurando consistencia y fiabilidad.
 
-6. **Experiencia de usuario fluida:**
+
+7. **Experiencia de usuario fluida:**
    - Carga dinámica de provincias, departamentos y municipios.
    - Animaciones e indicaciones visuales para mantener al usuario informado durante el cálculo.
 
@@ -44,35 +55,35 @@ El sistema integra fuentes de datos externas para garantizar precisión en direc
 
 ### 📑 Backend
 
-- **Spring Boot 3.x** Framework principal para crear el servidor y exponer endpoints REST.
-- **WebClient** Consumo de APIs externas (GeoRef y GeoApify).
-- **Maven** Gestión de dependencias y construcción del proyecto. 
-- **MapStruct** Mapeo automático entre DTOs y entidades.
-- **Lombok** Reducción de boilerplate (getters, setters, constructores).
-- **Java 17** Lenguaje principal para la lógica de negocio.
-- **SLF4J + Logback** Sistema de logging para depuración y monitoreo.
+- **Spring Boot 3.x** → Framework principal para crear el servidor y exponer endpoints REST.
+- **WebClient** → Consumo de APIs externas (GeoRef y GeoApify).
+- **Maven** → Gestión de dependencias y construcción del proyecto. 
+- **MapStruct** → Mapeo automático entre DTOs y entidades.
+- **Lombok** → Reducción de boilerplate (getters, setters, constructores).
+- **Java 17** → Lenguaje principal para la lógica de negocio.
+- **SLF4J + Logback** → Sistema de logging para depuración y monitoreo.
 
 ### 📑 Frontend
 
-- **Vite** Herramienta de bundling y desarrollo rápido para React.
-- **React** Framework principal para la interfaz de usuario.
-- **React Hooks** Manejo de estado y lógica de componentes.
-- **React-Bootstrap** Componentes visuales predefinidos y estilizados.
-- **React-Leaflet** Integración de mapas interactivos en React.
-- **Leaflet** Biblioteca de mapas geográficos (OpenStreetMap como base).
-- **Axios** Comunicación HTTP con el backend.
-- **JavaScript ES6+** Lógica del frontend y componentes dinámicos.
+- **Vite** → Herramienta de bundling y desarrollo rápido para React.
+- **React** → Framework principal para la interfaz de usuario.
+- **React Hooks** → Manejo de estado y lógica de componentes.
+- **React-Bootstrap** → Componentes visuales predefinidos y estilizados.
+- **React-Leaflet** → Integración de mapas interactivos en React.
+- **Leaflet** → Biblioteca de mapas geográficos (OpenStreetMap como base).
+- **Axios** → Comunicación HTTP con el backend.
+- **JavaScript ES6+** → Lógica del frontend y componentes dinámicos.
 
 ### 📑 Otros
 
-- **OpenStreetMap** Proveedor de teselas de mapa utilizadas en Leaflet.
+- **OpenStreetMap** → Proveedor de teselas de mapa utilizadas en Leaflet.
 - **APIs externas:**
-  * **GeoRef** Catálogo de provincias, departamentos y municipios argentinos.
-  * **GeoApify** Geocodificación, cálculo de ruta y distancia.
+  * **GeoRef** → Catálogo de provincias, departamentos y municipios argentinos.
+  * **GeoApify** → Geocodificación, cálculo de ruta y distancia.
 
 ---
 
-## 🗂️ Estructura General del Proyecto
+## 🏗️ Estructura General del Proyecto
 
 ### 📑 Backend
 
@@ -137,10 +148,15 @@ Para calcular el costo y el tiempo estimado de un envío, la aplicación utiliza
 definidos con base en valores de referencia actuales en Argentina.
 Estos valores están definidos en la clase `ShipmentParams` del backend y se utilizan en todos los cálculos de cotización.
 
+*Los siguientes valores son simbólicos y ajustados a modo demostrativo, no representan tarifas oficiales de ninguna empresa de logística*.
+
+### 👉 Parámetros base
+
 - Tiempo de entrega estimado según distancia:
   * Cortas distancias (menor que 100 km): 6 horas
   * Distancias medias (entre 100 y 500 km): 24 horas
   * Largas distancias (mayor que 500 km): 36 horas
+
 
 - Parámetros de precios:
   * Precio base: $1300
@@ -148,11 +164,18 @@ Estos valores están definidos en la clase `ShipmentParams` del backend y se uti
   * Costo por kilogramo: $75/kg
   * Costo por volumen: $0.01/cm³
 
-Estos valores son simbólicos y ajustados a modo demostrativo, no representan tarifas oficiales de ninguna empresa de logística.
 
----
+### 👉 Tipos de servicio
+Además de los parámetros base, el cálculo final depende del tipo de servicio seleccionado por el usuario.
+Cada modalidad aplica un multiplicador de costo y un ajuste en el tiempo estimado de entrega:
 
-🎞️ [Ver la playlist en YouTube](https://youtube.com/playlist?list=PLo6gJIiicJy_sBoJFaMlj9ZW8p6nWRiPT&si=PRa6qnuANEeMss5s)
+| Tipo de servicio | Descripción                  | Multiplicador de precio | Ajuste en tiempo estimado |
+| ---------------- | ---------------------------- | ----------------------- | ------------------------- |
+| **Normal**       | Más barato, entrega estándar | x1.0                    | base                      |
+| **Express**      | Entrega más rápida           | x1.25                   | −20 % del tiempo          |
+| **Prioritario**  | Entrega premium              | x1.5                    | −40 % del tiempo          |
+
+El tipo **Normal** es la opción predeterminada, equivalente al comportamiento original del sistema.
 
 ---
 

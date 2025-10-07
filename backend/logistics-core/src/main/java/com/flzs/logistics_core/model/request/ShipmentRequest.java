@@ -19,4 +19,7 @@ public class ShipmentRequest {
     @JsonProperty("paquete")
     private PackageDetails packageDetails;
 
+    @JsonProperty("tipoServicio")
+    private String serviceType;
+
 }

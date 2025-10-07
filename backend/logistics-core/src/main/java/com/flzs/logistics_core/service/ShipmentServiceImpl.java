@@ -3,6 +3,7 @@ package com.flzs.logistics_core.service;
 import com.flzs.logistics_core.model.domain.*;
 import com.flzs.logistics_core.model.dto.geoapify.ResolvedLocation;
 import com.flzs.logistics_core.model.enums.AddressAccuracy;
+import com.flzs.logistics_core.model.enums.ServiceType;
 import com.flzs.logistics_core.model.request.ShipmentRequest;
 import com.flzs.logistics_core.model.response.*;
 import com.flzs.logistics_core.model.routing.RouteInfo;
@@ -44,7 +45,12 @@ public class ShipmentServiceImpl implements ShipmentService {
         // Step 3: Calculate route using validated coordinates
         RouteInfo route = geoApifyService.getRoute(origin.coordinates(), destination.coordinates());
 
-        return buildSuccessfulResponse(route, origin, destination, shipment.getPackageDetails());
+        // Step 4: Get service type
+        ServiceType serviceType = ServiceType.fromString(shipment.getServiceType());
+
+        logger.info("Calculating shipment with service type: {}", serviceType);
+
+        return buildSuccessfulResponse(route, origin, destination, shipment.getPackageDetails(), serviceType);
     }
 
     private ResolvedLocation resolveOrigin(Address address) {
@@ -100,10 +106,11 @@ public class ShipmentServiceImpl implements ShipmentService {
     }
 
     private ShipmentResponse buildSuccessfulResponse(RouteInfo route, ResolvedLocation origin,
-                                                     ResolvedLocation destination, PackageDetails pkg) {
+                                                     ResolvedLocation destination, PackageDetails pkg,
+                                                     ServiceType serviceType) {
         double distanceKm = route.distanceInKm();
-        int etaHours = ShipmentCalculator.estimateTime(distanceKm);
-        BigDecimal price = ShipmentCalculator.estimatePrice(distanceKm, pkg);
+        int etaHours = ShipmentCalculator.estimateTime(distanceKm, serviceType);
+        BigDecimal price = ShipmentCalculator.estimatePrice(distanceKm, pkg, serviceType);
 
         ShipmentResponse resp = new ShipmentResponse();
         resp.setDistanceKm(distanceKm);

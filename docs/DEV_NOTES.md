@@ -141,6 +141,7 @@ Esto **evita** usar un **Singleton** y permite identificar con precisión el **o
 - `PackageSection.jsx` → peso y dimensiones.
 - `ShippingResult.jsx` → resultados.
 - `RouteMap.jsx` → mapa interactivo.
+- `ServiceTypeSection.jsx` *(agregado en Feature 1)* → selección del tipo de servicio (Normal / Express / Prioritario).
 
 ---
 
@@ -236,6 +237,31 @@ Fue un paso importante para **conectar la lógica del backend con una representa
 
 **En resumen**, este proyecto me ayudó a **ganar confianza en la integración de servicios externos** y en la **visualización de datos geoespaciales** dentro de una aplicación web.
 
+---
+
+## 🆕 Feature 1 – Tipos de Servicio 
+
+📅 **Fecha**: *2025-10-07*  
+
+Se agregó la posibilidad de seleccionar un tipo de servicio de envío (**Normal**, **Express** o **Prioritario**).
+Esta mejora hace que la aplicación simule con mayor realismo una cotizadora de envíos profesional, permitiendo variar el precio y tiempo estimado según la modalidad elegida por el usuario.
+
+
+🎯 **Objetivo**: Ajustar el costo y el tiempo estimado según la modalidad de envío elegida por el usuario.
+
+
+🧩 **Impacto**: Afecta solo al cálculo del costo y tiempo estimado.
+
+
+⚙️ **Implementación**
+- Frontend
+    * Nuevo componente `ServiceTypeSection.jsx` integrado en `ShippingForm.jsx`.
+    
+- Backend:
+    * Nuevo `enum ServiceType`.
+    * Campo `serviceType` agregado en `ShipmentRequest`.
+    * Ajustes en `ShipmentService` y `ShipmentCalculator` para incorporar el tipo de servicio en los cálculos.
+    
 ---
 
 📌 **Nota**: Para una descripción general del proyecto, instrucciones de uso y guía para usuarios finales, consulta la [documentación oficial](./README.md).

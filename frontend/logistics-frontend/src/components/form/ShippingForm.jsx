@@ -2,6 +2,7 @@ import { useState, useCallback, useMemo } from "react";
 import { validateShipmentData } from "../../utils/validators/shipmentFormValidator";
 import { AddressSection } from "./AddressSection";
 import { PackageSection } from "./PackageSection";
+import { ServiceTypeSection } from "./ServiceTypeSection";
 
 export function ShippingForm({ onSubmit, isLoading }) {
   const [formData, setFormData] = useState({
@@ -24,7 +25,8 @@ export function ShippingForm({ onSubmit, isLoading }) {
       heightCm: "",
       widthCm: "",
       lengthCm: ""
-    }
+    },
+    serviceType: 'normal'
   });
 
   const [errors, setErrors] = useState({});
@@ -49,6 +51,10 @@ export function ShippingForm({ onSubmit, isLoading }) {
 
   const handlePackageChange = useCallback((newPackageData) => {
     setFormData(prev => ({ ...prev, packageData: newPackageData }));
+  }, []);
+
+  const handleServiceTypeChange = useCallback((newServiceType) => {
+    setFormData(prev => ({ ...prev, serviceType: newServiceType }));
   }, []);
 
   const handleSubmit = (e) => {
@@ -81,6 +87,7 @@ export function ShippingForm({ onSubmit, isLoading }) {
         widthCm: parseFloat(formData.packageData.widthCm),
         lengthCm: parseFloat(formData.packageData.lengthCm),
       },
+      tipoServicio: formData.serviceType
     });
   };
 
@@ -105,6 +112,10 @@ export function ShippingForm({ onSubmit, isLoading }) {
         data={formData.packageData}
         errors={errors}
         onChange={handlePackageChange} />
+
+      <ServiceTypeSection
+        selectedType={formData.serviceType}
+        onChange={handleServiceTypeChange} />
 
       <div className="d-grid">
         <button
