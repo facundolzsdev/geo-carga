@@ -179,4 +179,8 @@ El tipo **Normal** es la opción predeterminada, equivalente al comportamiento o
 
 ---
 
+### 🎬 [Ver Demo en YouTube](https://www.youtube.com/playlist?list=PLo6gJIiicJy_sBoJFaMlj9ZW8p6nWRiPT)
+
+---
+
 📌 **Nota**: Para ver los detalles técnicos internos, decisiones de implementación y apuntes de desarrollo, consulta las [notas de desarrollador](./DEV_NOTES.md).
